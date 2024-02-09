@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+</head>
+
+<body>
+    <h1>{{ title }}</h1>
+    <table>
+      <tr>
+      {% for col in header %}
+        <th>{{ col }}</th>
+      {% endfor %}
+      </tr>
+
+      {% for employee in employees %}
+      <tr>
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.mail }}</td>
+        <td>{% if not employee.gender %}男{% endif %}
+            {% if employee.gender %}女{% endif %}
+        </td>
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.year }}</td>
+        <td>{{ employee.created_at }}</td>
+      </tr>
+      {% endfor %}
+  </table>
+  </body>
+
+</html>
